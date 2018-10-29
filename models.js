@@ -5,11 +5,12 @@ mongoose.Promise = global.Promise;
 
 const toDoSchema = mongoose.Schema({
 	item: String,
-	checked: Boolean,
+	checked: String, //Boolean
 	importance: String, //monthly, weekly, daily
 	hours: String, //hours needed to spend on item
 	dueDate: String
 });
+
 
 
 toDoSchema.methods.serialize = function() {
