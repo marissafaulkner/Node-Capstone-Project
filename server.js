@@ -17,8 +17,20 @@ mongoose.Promise = global.Promise;
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-	res.send('hello world');
+app.get('/todolist', (req, res) => {
+	ToDoList
+    .find()
+    .then(todolist => {
+      res.json({
+        todolists: todolists.map(
+          (todolist) => todolist.serialize())
+      });
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+    });
 });
 
 app.post('/', (req, res) => {
