@@ -16,11 +16,11 @@ const toDoSchema = mongoose.Schema({
 toDoSchema.methods.serialize = function() {
 	return {
 		id: this._id,
-		todo: this.todo,
+		item: this.item,
 		checked: this.checked,
 		importance: this.importance,
 		hours: this.hours,
-		dueDate: this.duedate
+		dueDate: this.dueDate
 	};
 };
 

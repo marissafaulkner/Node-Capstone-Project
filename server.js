@@ -21,10 +21,8 @@ app.get('/todolist', (req, res) => {
 	ToDoList
     .find()
     .then(todolist => {
-      res.json({
-        todolists: todolists.map(
-          (todolist) => todolist.serialize())
-      });
+    	res.json(todolist)
+     
     })
     .catch(
       err => {
