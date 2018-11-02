@@ -32,6 +32,20 @@ app.get('/todolist', (req, res) => {
 });
 
 app.post('/', (req, res) => {
+	const requiredFields = ['item', 'importance'];
+  	for (let i = 0; i < requiredFields.length; i++) {
+    	const field = requiredFields[i];
+   		if (!(field in req.body)) {
+      		const message = `Missing \`${field}\` in request body`;
+      		console.error(message);
+      		return res.status(400).send(message);
+    }
+  }
+
+
+
+
+
 	ToDoList
 		.create({
 			item: req.body.item,
@@ -51,7 +65,46 @@ app.post('/', (req, res) => {
 });	
 
 
+app.put("/todolist/:id", (req, res) => {
+  if (!(req.params.id)) {
+    const message =
+      `Request path id (${req.params.id}) and request body id ` +
+      `(${req.body.id}) must match`;
+    console.error(message);
+    return res.status(400).json({ message: message });
+  }
 
+
+
+  const toUpdate = {};
+  const updateableFields = ["item", "checked", "importance", "hours", "dueDate"];
+
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      toUpdate[field] = req.body[field];
+    }
+  });
+
+  ToDoList
+    .findByIdAndUpdate(req.params.id, { $set: toUpdate })
+    .then(todolist => res.status(204).end())
+    .catch(err => res.status(500).json({ message: "Internal server error" }));
+
+});
+
+
+app.delete("/todolist/:id", (req, res) => {
+  ToDoList.findByIdAndRemove(req.params.id)
+    .then(restaurant => res.status(204).end())
+    .catch(err => res.status(500).json({ message: "Internal server error" }));
+});
+
+
+
+// catch-all endpoint if client makes request to non-existent endpoint
+app.use("*", function(req, res) {
+  res.status(404).json({ message: "Not Found" });
+});
 
 
 
