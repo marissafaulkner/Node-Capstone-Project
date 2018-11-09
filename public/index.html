@@ -12,6 +12,41 @@
 <body>
 	<main role="main">
 
+		<button type="button">Add Item</button>
+
+		<form action="/additem" method="post">
+
+			<label for="item" required>To Do Item</label>
+      		<input type="text" name="item" id="item" required="" />
+
+      		<select name="importance" id="importance" required>
+		        <option value="0">Daily</option>
+		        <option value="1" selected>Weekly</option>
+		        <option value="2">Monthly</option>
+      		</select>
+
+      		<br>
+
+      		<label for="hours">Time Spent</label>
+      		<input type="text" name="hours" id="hours">
+
+      		<br>
+
+
+      		<label for="dueDate">Due Date</label>
+      		<input type="text" name="dueDate" id="due-date">
+
+      		<br>
+
+      		<button type="submit">Add</button>
+
+
+		</form>
+
+
+
+
+
 		<div class="daily-list">
 			<h2>Daily To Dos</h2>
 				<ul class="js-daily-list">

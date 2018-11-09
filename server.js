@@ -31,7 +31,7 @@ app.get('/todolist', (req, res) => {
     });
 });
 
-app.post('/', (req, res) => {
+app.post('/additem', (req, res) => {
 	const requiredFields = ['item', 'importance'];
   	for (let i = 0; i < requiredFields.length; i++) {
     	const field = requiredFields[i];
