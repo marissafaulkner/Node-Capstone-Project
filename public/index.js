@@ -1,4 +1,4 @@
-let html = []
+'use strict';
 
 function getToDosFromApi() {
 // 	$.getJSON('/todolist', function(data) {
