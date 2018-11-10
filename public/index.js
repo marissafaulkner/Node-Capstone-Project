@@ -42,13 +42,13 @@ function filterToDoItems(data) {
 	var monthlyToDos = [];
 	if (data) {
 		data.forEach(item => {
-			if (item.importance === 'daily') {
+			if (item.importance === 'Daily') {
 				dailyToDos.push(item);
 			} 
-			if (item.importance === 'weekly') {
+			else if (item.importance === 'Weekly') {
 				weeklyToDos.push(item);
 			}
-			if (item.importance === 'monthly') {
+			else if (item.importance === 'Monthly') {
 				monthlyToDos.push(item);
 			}
 
@@ -62,7 +62,7 @@ function filterToDoItems(data) {
 
 function renderToDoItems(data) {
 	return `
-		<li><input type="checkbox" id="myCheck">${data.item} <span class="details">| ${data.hours} | ${data.dueDate}</span></li>
+		<li><input type="checkbox" id="myCheck">${data.item} <span class="details"> ${data.hours ? `| ${data.hours}` : ""} ${data.dueDate ? `| ${data.dueDate}` : ""}</span></li>
 	`;
 }
 

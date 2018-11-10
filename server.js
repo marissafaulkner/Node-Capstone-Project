@@ -1,10 +1,12 @@
 'use strict';
 
 
-const bodyParser = require('body-parser');
+let bodyParser = require('body-parser');
+bodyParser = bodyParser.json();
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+
 
 
 const {DATABASE_URL, PORT} = require('./config');
@@ -15,7 +17,9 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 app.use(express.static('public'));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json());
+
 
 app.get('/todolist', (req, res) => {
 	ToDoList
@@ -31,8 +35,9 @@ app.get('/todolist', (req, res) => {
     });
 });
 
-app.post('/additem', (req, res) => {
+app.post('/additem', bodyParser, (req, res) => {
 	const requiredFields = ['item', 'importance'];
+	console.log(req.body)
   	for (let i = 0; i < requiredFields.length; i++) {
     	const field = requiredFields[i];
    		if (!(field in req.body)) {
