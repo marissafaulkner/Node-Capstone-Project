@@ -62,7 +62,7 @@ function filterToDoItems(data) {
 
 function renderToDoItems(data) {
 	return `
-		<li><input type="checkbox" id="myCheck">${data.item} <span class="details"> ${data.hours ? `| ${data.hours}` : ""} ${data.dueDate ? `| ${data.dueDate}` : ""}</span></li>
+		<li><input type="checkbox" id="myCheck">${data.item} <span class="details"> ${data.hours ? `| ${data.hours}` : ""} ${data.dueDate ? `| ${data.dueDate}` : ""}</span><button type="button" class="editButton">Edit</button><button type="button" class="deleteButton">Delete</button></li>
 	`;
 }
 
