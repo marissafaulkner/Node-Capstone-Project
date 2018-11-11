@@ -98,9 +98,9 @@ app.put("/todolist/:id", (req, res) => {
 });
 
 
-app.delete("/todolist/:id", (req, res) => {
+app.delete("/delete/:id", (req, res) => {
   ToDoList.findByIdAndRemove(req.params.id)
-    .then(restaurant => res.status(204).end())
+    .then(todolist => res.status(204).end())
     .catch(err => res.status(500).json({ message: "Internal server error" }));
 });
 
