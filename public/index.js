@@ -62,9 +62,9 @@ function filterToDoItems(data) {
 
 function renderToDoItems(data) {
 	return `
-		<li class="toDoItem">
-			<input type="checkbox" id="myCheck">${data.item} <span class="details"> ${data.hours ? `| ${data.hours}` : ""} ${data.dueDate ? `| ${data.dueDate}` : ""}</span>
-			<button type="button" class="editButton">Edit</button><button type="button" class="deleteButton">Delete</button>
+		<li class="toDoItem ${data._id}">
+			<input type="checkbox" id="myCheck"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+			<button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button>
 		</li>
 	`;
 }
@@ -77,6 +77,8 @@ function displayDailyToDoItems(arr) {
 	})
 	
     $('.js-daily-list').html(dailys)
+    // itemDelete(arr);
+    // editItem();
 
 }
 
@@ -88,6 +90,8 @@ function displayWeeklyToDoItems(arr) {
 	})
 	
     $('.js-weekly-list').html(weeklys)
+    // itemDelete(arr);
+    // editItem();
 
 }
 
@@ -99,6 +103,8 @@ function displayMonthlyToDoItems(arr) {
 	})
 	
     $('.js-monthly-list').html(monthlys)
+    // itemDelete(arr);
+    // editItem();
 
 
 }
