@@ -12,40 +12,43 @@
 <body>
 	<main role="main">
 
-		<button type="button">Add Item</button>
+		<button type="button" id="addButton">Add Item</button>
 
-		<form action="" method="" id="add">
+		<div id="add-item-section" style="display:none;">
 
-			<label for="item" required>To Do Item</label>
-      		<input type="text" name="item" id="item" required/>
+			<form action="" method="" id="addForm">
 
-      		<select name="importance" id="importance" required>
-		        <option value="Daily">Daily</option>
-		        <option value="Weekly" selected>Weekly</option>
-		        <option value="Monthly">Monthly</option>
-      		</select>
+				<label for="item" required>To Do Item</label>
+	      		<input type="text" name="item" id="item" required/>
 
-      		<br>
+	      		<select name="importance" id="importance" required>
+			        <option value="Daily">Daily</option>
+			        <option value="Weekly" selected>Weekly</option>
+			        <option value="Monthly">Monthly</option>
+	      		</select>
 
-      		<label for="hours">Time Spent</label>
-      		<input type="text" name="hours" id="hours">
+	      		<br>
 
-      		<br>
+	      		<label for="hours">Time Spent</label>
+	      		<input type="text" name="hours" id="hours">
 
-
-      		<label for="dueDate">Due Date</label>
-      		<input type="text" name="dueDate" id="due-date">
-
-      		<br>
-
-      		<button type="submit">Add</button>
+	      		<br>
 
 
-		</form>
+	      		<label for="dueDate">Due Date</label>
+	      		<input type="text" name="dueDate" id="due-date">
+
+	      		<br>
+
+	      		<button type="submit">Add</button>
+
+			</form>
+
+		</div>
 
 
 
-
+		
 		<div class="daily-list">
 			<h2>Daily To Dos</h2>
 				<ul class="js-daily-list">

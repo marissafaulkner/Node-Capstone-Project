@@ -1,40 +1,73 @@
 'use strict';
 
-$('#add').on('submit', function(event) {
-	event.preventDefault()
-	console.log($('input[name="item"]').val())
-	console.log($('select#importance').val())
-	console.log($('input[name="hours"]').val())
-	console.log($('input[name="dueDate"]').val())
+function addItemToDB() {
+	$('#addForm').on('submit', function(event) {
+		event.preventDefault()
 
-	let data = {
-		item: $('input[name="item"]').val(),
-		checked: false,
-		importance: $('select#importance').val(),
-		hours: $('input[name="hours"]').val(),
-		dueDate: $('input[name="dueDate"]').val()
-	}
+		let data = {
+			item: $('input[name="item"]').val(),
+			checked: false,
+			importance: $('select#importance').val(),
+			hours: $('input[name="hours"]').val(),
+			dueDate: $('input[name="dueDate"]').val()
+		}
 
-	data = JSON.stringify(data)
+		data = JSON.stringify(data)
 
-	$.ajax({
-  		type: "POST",
-		url: "/additem",
-		data: data,
-		success: function(data) {
-			console.log(data)
-			if (data.importance === 'Daily') {
-				$('.js-daily-list').append(data);
-			} 
-			else if (data.importance === 'Weekly') {
-				$('.js-weekly-list').append(data);
-			}
-			else if (data.importance === 'Monthly') {
-				$('.js-monthly-list').append(data);
-			}
-		},
-		dataType: 'json',
-		contentType: 'application/json'
-	});
-})
+		$.ajax({
+	  		type: "POST",
+			url: "/additem",
+			data: data,
+			success: function(data) {
+				console.log(data)
+				if (data.importance === 'Daily') {
+					$('.js-daily-list').append(data);
+					$('.js-daily-list').append(renderToDoItems(data));
+				} 
+				else if (data.importance === 'Weekly') {
+					$('.js-weekly-list').append(data);
+					$('.js-daily-list').append(renderToDoItems(data));
+				}
+				else if (data.importance === 'Monthly') {
+					$('.js-monthly-list').append(data);
+					$('.js-daily-list').append(renderToDoItems(data));
+				}
+			},
+			dataType: 'json',
+			contentType: 'application/json'
+		});
+	})
+};
 
+
+function toggleShowEdit() {
+    $('#addButton').on('click', function(event) {
+    	let formDiv = document.getElementById("add-item-section")
+    	if (formDiv.style.display === "none") {
+    		formDiv.style.display = "block";
+    	} else {
+    		formDiv.style.display = "none";
+    	}
+    })
+
+}
+
+function toggleHideEdit() {
+	$('#addForm').on('submit', function(event) {
+		let formDiv = document.getElementById("add-item-section")
+		formDiv.style.display = "none"
+		clearForm();
+	})
+}
+
+function clearForm() {
+	document.getElementById("addForm").reset();
+}
+
+function createAllItems() {
+	addItemToDB();
+	toggleShowEdit();
+	toggleHideEdit();
+}
+
+$(createAllItems);
