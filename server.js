@@ -70,7 +70,7 @@ app.post('/additem', bodyParser, (req, res) => {
 });	
 
 
-app.put("/todolist/:id", (req, res) => {
+app.put("/edit/:id", (req, res) => {
   if (!(req.params.id)) {
     const message =
       `Request path id (${req.params.id}) and request body id ` +

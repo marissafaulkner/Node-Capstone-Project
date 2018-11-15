@@ -1,6 +1,6 @@
 'use strict';
 
-function editItem() {
+function renderEditItemForm() {
 	$(document).on('click', '.editButton', function(event) {
 		console.log($(event.currentTarget).parent()[0])
 		let databaseId = $(event.currentTarget).attr('id');
@@ -8,11 +8,7 @@ function editItem() {
 		let hoursItem = $(event.currentTarget).parent().find('.hourshtml').text()
 		let dueDateItem = $(event.currentTarget).parent().find('.duedatehtml').text()
 
-
-
-		$('#edit-item-section').html(`
-
-			<form action="/todolist/${databaseId}" method="put" id="edit-form">
+		$('.editForm').html(`
 
 				<label for="item" required>To Do Item</label>
 	      		<input type="text" name="item" id="item" value="${item}" required/>
@@ -36,61 +32,61 @@ function editItem() {
 
 	      		<br>
 
-	      		<button type="submit">Update</button>
+	      		<button type="submit" class="updateButton" id="${databaseId}">Update</button>
 
-			</form>`)
+			`)
 	});
 
 }
 
-function renderEditForm(data) {
-	return `
 
-		<form action="/todolist/${data._id}" method="put" id="edit-form">
-
-			<label for="item" required>To Do Item</label>
-      		<input type="text" name="item" id="item" value="${data.item}" required/>
-
-      		<select name="importance" id="importance" required>
-		        <option value="Daily">Daily</option>
-		        <option value="Weekly" selected>Weekly</option>
-		        <option value="Monthly">Monthly</option>
-      		</select>
-
-      		<br>
-
-      		<label for="hours">Time Spent</label>
-      		<input type="text" name="hours" id="hours" value="${data.hours}">
-
-      		<br>
-
-
-      		<label for="dueDate">Due Date</label>
-      		<input type="text" name="dueDate" id="due-date" value="${data.dueDate}">
-
-      		<br>
-
-      		<button type="submit">Update</button>
-
-		</form>
-`
-}
-
-
-
-
-function showHideEdit() {
-	// let databaseId = 
-	$(document).on('click', '.editButton', function(event) {
+function submitEdit() {
+	$('#edit-form').on('submit', ".updateButton", function(event) {
+		event.preventDefault();
 		console.log('test')
-    	let formDiv = document.getElementById("edit-form")
-    	if (formDiv.style.display === "none") {
-    		formDiv.style.display = "block";
-    	} else {
-    		formDiv.style.display = "none";
-    	}
-    })
+
+		let databaseId = $(event.currentTarget).attr('id')
+		console.log(databaseId)
+
+		let data = {
+			item: $('input[name="item"]').val(),
+			importance: $('select#importance').val(),
+			hours: $('input[name="hours"]').val(),
+			dueDate: $('input[name="dueDate"]').val()
+		}
+
+		console.log(data)
+
+		data = JSON.stringify(data)
+
+		$.ajax({
+	  		type: 'PUT',
+			url: 'edit/' + databaseId,
+			data: data,
+			success: function(data) {
+				console.log('success')
+			},
+			dataType: 'json',
+			contentType: 'application/json'
+		});
+
+
+	});
 }
+
+
+// function showHideEdit() {
+// 	// let databaseId = 
+// 	$(document).on('click', '.editButton', function(event) {
+// 		console.log('test')
+//     	let formDiv = document.getElementById("edit-form")
+//     	if (formDiv.style.display === "none") {
+//     		formDiv.style.display = "block";
+//     	} else {
+//     		formDiv.style.display = "none";
+//     	}
+//     })
+// }
 
 
 
@@ -124,8 +120,9 @@ function itemDelete() {
 
 
 function editAndDelete() {
+	renderEditItemForm();
+	submitEdit();
 	itemDelete();
-	editItem();
 	// showHideEdit()
 }
 

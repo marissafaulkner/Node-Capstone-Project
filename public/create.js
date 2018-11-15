@@ -2,7 +2,7 @@
 
 function addItemToDB() {
 	$('#addForm').on('submit', function(event) {
-		event.preventDefault()
+		event.preventDefault();
 
 		let data = {
 			item: $('input[name="item"]').val(),
