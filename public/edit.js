@@ -13,10 +13,10 @@ function renderEditItemForm() {
 		let dueDateText = $.trim(dueDateItem.replace("|", ""));
 
 		$('.editForm').html(`
-				<label for="item" required>To Do Item</label>
-	      		<input type="text" name="item" id="item" value="${itemText}" required/>
+				<label for="edit-item" required>To Do Item</label>
+	      		<input type="text" name="edit-item" id="edit-item" value="${itemText}" required/>
 
-	      		<select name="importance" id="importance" required>
+	      		<select name="edit-importance" id="edit-importance" required>
 			        <option value="Daily">Daily</option>
 			        <option value="Weekly" selected>Weekly</option>
 			        <option value="Monthly">Monthly</option>
@@ -24,14 +24,14 @@ function renderEditItemForm() {
 
 	      		<br>
 
-	      		<label for="hours">Time Spent</label>
-	      		<input type="text" name="hours" id="hours" value="${hoursText}">
+	      		<label for="edit-hours">Time Spent</label>
+	      		<input type="text" name="edit-hours" id="edit-hours" value="${hoursText}">
 
 	      		<br>
 
 
-	      		<label for="dueDate">Due Date</label>
-	      		<input type="text" name="dueDate" id="due-date" value="${dueDateText}">
+	      		<label for="edit-dueDate">Due Date</label>
+	      		<input type="text" name="edit-dueDate" id="edit-due-date" value="${dueDateText}">
 
 	      		<br>
 
@@ -43,33 +43,55 @@ function renderEditItemForm() {
 
 
 function submitEdit() {
-	$('#edit-form').on('submit', ".updateButton", function(event) {
+	$('#edit-form').on('submit', function(event) {
 		event.preventDefault();
-		console.log('test')
 
-		let databaseId = $(event.currentTarget).attr('id')
-		console.log(databaseId)
+		let databaseId = $('.updateButton').attr('id')
+
 
 		let data = {
-			item: $('input[name="item"]').val(),
-			importance: $('select#importance').val(),
-			hours: $('input[name="hours"]').val(),
-			dueDate: $('input[name="dueDate"]').val()
+			item: $('input[name="edit-item"]').val(),
+			checked: 'false',
+			importance: $('select#edit-importance').val(),
+			hours: $('input[name="edit-hours"]').val(),
+			dueDate: $('input[name="edit-dueDate"]').val()
 		}
-
-		console.log(data)
 
 		data = JSON.stringify(data)
 
 		$.ajax({
 	  		type: 'PUT',
+	  		contentType: 'application/json',
+			// dataType: 'json',
 			url: 'edit/' + databaseId,
 			data: data,
 			success: function(data) {
-				console.log('success')
-			},
-			dataType: 'json',
-			contentType: 'application/json'
+				$('li.' + databaseId).hide();
+			if (data.importance === 'Daily') {
+				$('.js-daily-list').append(`
+					<li class="toDoItem ${data._id}">
+						<input type="checkbox" id="myCheck"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+						<span class="edit-delete-buttons"><button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
+					</li>
+					`);
+			} 
+			else if (data.importance === 'Weekly') {
+				$('.js-weekly-list').append(`
+					<li class="toDoItem ${data._id}">
+						<input type="checkbox" id="myCheck"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+						<span class="edit-delete-buttons"><button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
+					</li>
+					`);
+			}
+			else if (data.importance === 'Monthly') {
+				$('.js-monthly-list').append(`
+					<li class="toDoItem ${data._id}">
+						<input type="checkbox" id="myCheck"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+						<span class="edit-delete-buttons"><button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
+					</li>
+					`);
+			}
+			}
 		});
 
 

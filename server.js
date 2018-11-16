@@ -80,21 +80,49 @@ app.put("/edit/:id", (req, res) => {
   }
 
 
-
+  console.log('req.body', req.body)
   const toUpdate = {};
   const updateableFields = ["item", "checked", "importance", "hours", "dueDate"];
 
   updateableFields.forEach(field => {
+    console.log('feild', req.body[field])
     if (field in req.body) {
       toUpdate[field] = req.body[field];
     }
   });
 
-  ToDoList
-    .findByIdAndUpdate(req.params.id, { $set: toUpdate })
-    .then(todolist => res.status(204).end())
-    .catch(err => res.status(500).json({ message: "Internal server error" }));
+  console.log('toUpdate', toUpdate)
 
+  ToDoList
+    // .findByIdAndUpdate(req.params.id, { $set: toUpdate }, {"new": true})
+    // .then(todolist => {
+    //   console.log(todolist)
+    //   res.status(204).send('testing')
+    // })
+    // .catch(err => res.status(500).json({ message: "Internal server error" }));
+
+    .findOne({_id: req.params.id})
+    .then(todo => {
+      console.log('todo', todo)
+      // if(todo) {
+      //   console.log(todo)
+      //   res.status(200).json(todo)
+      // } else {
+        ToDoList
+          .findByIdAndUpdate(req.params.id, { $set: toUpdate }, {new: true})
+          .then(updatedToDo => {
+            console.log('updatedToDo', updatedToDo)
+            res.status(200).json({
+              id: updatedToDo.id,
+              item: updatedToDo.item,
+              checked: updatedToDo.checked,
+              importance: updatedToDo.importance,
+              hours: updatedToDo.hours,
+              dueDate: updatedToDo.dueDate
+            })
+          })
+      // }
+    })
 });
 
 
