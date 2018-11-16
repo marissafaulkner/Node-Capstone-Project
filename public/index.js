@@ -64,7 +64,7 @@ function renderToDoItems(data) {
 	return `
 		<li class="toDoItem ${data._id}">
 			<input type="checkbox" id="myCheck"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
-			<button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button>
+			<span class="edit-delete-buttons"><button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
 		</li>
 	`;
 }

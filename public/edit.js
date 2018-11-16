@@ -2,16 +2,19 @@
 
 function renderEditItemForm() {
 	$(document).on('click', '.editButton', function(event) {
-		console.log($(event.currentTarget).parent()[0])
+		console.log($(event.currentTarget).parent().parent()[0])
 		let databaseId = $(event.currentTarget).attr('id');
-		let item = $(event.currentTarget).parent().find('.itemhtml').text()
-		let hoursItem = $(event.currentTarget).parent().find('.hourshtml').text()
-		let dueDateItem = $(event.currentTarget).parent().find('.duedatehtml').text()
+		let item = $(event.currentTarget).parent().parent().find('.itemhtml').text()
+		let hoursItem = $(event.currentTarget).parent().parent().find('.hourshtml').text()
+		let dueDateItem = $(event.currentTarget).parent().parent().find('.duedatehtml').text()
+
+		let itemText = $.trim(item);
+		let hoursText = $.trim(hoursItem.replace("|", ""));
+		let dueDateText = $.trim(dueDateItem.replace("|", ""));
 
 		$('.editForm').html(`
-
 				<label for="item" required>To Do Item</label>
-	      		<input type="text" name="item" id="item" value="${item}" required/>
+	      		<input type="text" name="item" id="item" value="${itemText}" required/>
 
 	      		<select name="importance" id="importance" required>
 			        <option value="Daily">Daily</option>
@@ -22,18 +25,17 @@ function renderEditItemForm() {
 	      		<br>
 
 	      		<label for="hours">Time Spent</label>
-	      		<input type="text" name="hours" id="hours" value="${hoursItem}">
+	      		<input type="text" name="hours" id="hours" value="${hoursText}">
 
 	      		<br>
 
 
 	      		<label for="dueDate">Due Date</label>
-	      		<input type="text" name="dueDate" id="due-date" value="${dueDateItem}">
+	      		<input type="text" name="dueDate" id="due-date" value="${dueDateText}">
 
 	      		<br>
 
 	      		<button type="submit" class="updateButton" id="${databaseId}">Update</button>
-
 			`)
 	});
 
@@ -113,7 +115,23 @@ function itemDelete() {
 	});
 };
 
+function hideButtons() {
+	$('ul').on('mouseenter', '.toDoItem', function(event) {
+		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
+	});
+	$('ul').on('mouseleave', '.toDoItem', function() {
+		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
+	});
 
+}
+
+function toggleShowDetails() {
+    $('#details-button').on('click', function(event) {
+    	$('.hourshtml').toggle();
+    	$('.duedatehtml').toggle();
+    })
+
+}
 
 
 
@@ -123,6 +141,8 @@ function editAndDelete() {
 	renderEditItemForm();
 	submitEdit();
 	itemDelete();
+	hideButtons();
+	toggleShowDetails();
 	// showHideEdit()
 }
 
