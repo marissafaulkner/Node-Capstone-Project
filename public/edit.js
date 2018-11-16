@@ -2,6 +2,7 @@
 
 function renderEditItemForm() {
 	$(document).on('click', '.editButton', function(event) {
+		$('.editForm').show();
 		console.log($(event.currentTarget).parent().parent()[0])
 		let databaseId = $(event.currentTarget).attr('id');
 		let item = $(event.currentTarget).parent().parent().find('.itemhtml').text()
@@ -91,6 +92,7 @@ function submitEdit() {
 					</li>
 					`);
 			}
+			$('.editForm').hide()
 			}
 		});
 
