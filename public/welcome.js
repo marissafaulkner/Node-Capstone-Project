@@ -8,9 +8,9 @@ function heresHow() {
 		$('.js-welcome').html(`
 			<h2>To begin,</h2>
 			<p>break up your tasks into daily, weekly, and monthly categories</p>
-			<p>- Things you have to get done daily or today</p>
-			<p>- Things you have to get done weekly or this week</p>
-			<p>- And things you have to get done either monthly, by the end of the month, or that don't have a forseeable deadline</p>
+			<p>&#8594; Things you have to get done daily or today</p>
+			<p>&#8594; Things you have to get done weekly or this week</p>
+			<p>&#8594; And things you have to get done either monthly, by the end of the month, or that don't have a forseeable deadline</p>
 
 			<h3>tip</h3>
 			<p>Add things to your daily to dos that are easily accomplished to give yourself a boost of confidence in your day</p>
