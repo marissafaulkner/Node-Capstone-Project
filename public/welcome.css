@@ -1,0 +1,45 @@
+* {
+	box-sizing: border-box;
+}
+
+
+html {
+	height: 100%;
+
+}
+
+
+body {
+	background-image: linear-gradient(#5773a8, #e6f9fe);
+	/*background-color: #5773a8;*/
+	text-align: center;
+	font-family: 'Niramit', sans-serif;
+	color: white;
+}
+
+h1 {
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	border: 2px solid;
+	padding: 4.5px;
+	display: inline;
+}
+
+h2 {
+	font-style: italic;
+	margin: 50px 5px 0px 5px;
+}
+
+.to {
+	margin-top: 5px;
+	margin-bottom: 50px;
+}
+
+.discription {
+	margin-top: 50px;
+}
+
+.skip {
+	font-size: 15px;
+	color: white;
+}
