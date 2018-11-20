@@ -4,85 +4,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PROcrastinate</title>
-	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="welcome.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<meta name="description" content="Use your procrastination to get things done.">
 </head>
 <body>
-	<main role="main">
-
-		<button type="button" id="addButton">Add Item</button>
-
-		<div id="add-item-section" style="display:none;">
-
-			<form action="" method="" id="addForm">
-
-				<label for="item" required>To Do Item</label>
-	      		<input type="text" name="item" id="item" required/>
-
-	      		<select name="importance" id="importance" required>
-			        <option value="Daily">Daily</option>
-			        <option value="Weekly" selected>Weekly</option>
-			        <option value="Monthly">Monthly</option>
-	      		</select>
-
-	      		<br>
-
-	      		<label for="hours">Time Spent</label>
-	      		<input type="text" name="hours" id="hours">
-
-	      		<br>
-
-
-	      		<label for="dueDate">Due Date</label>
-	      		<input type="text" name="dueDate" id="due-date">
-
-	      		<br>
-
-	      		<button type="submit">Add</button>
-
-			</form>
-
-		</div>
-
-		<div id="edit-item-section">
-			<form action="" method="" id="edit-form" class="editForm"></form>
+	<main>
+		<div class="js-welcome">
+			<h2>Welcome!</h2>
+				<p>to</p>
+			<h1>PROcrastinate</h1>
+				<p>Use your procrastination to get things done</p>
+				<button type="button" class="heres-how">Here's how</button>
 		</div>
 
 
 
-		
-		<div class="daily-list">
-			<h2>Daily To Dos</h2>
-				<ul class="js-daily-list">
-				
-				</ul>
-		</div>
-
-
-		<div class="weekly-list">
-			<h2>Weekly To Dos</h2>
-				<ul class="js-weekly-list">
-					
-				</ul>
-		</div>
-
-
-		<div class="monthly-list">
-			<h2>Monthly To Dos</h2>
-				<ul class="js-monthly-list">
-					
-				</ul>
-		</div>
-		
-		<button type="button" id="details-button">Show/Hide Details</button>
-
+			<a href="main.html">skip</a>
 
 	</main>
-	<script src="index.js"></script>
-	<script src="create.js"></script>
-	<script src="edit.js"></script>
 
+	<script src="welcome.js"></script>
 </body>
 </html>
