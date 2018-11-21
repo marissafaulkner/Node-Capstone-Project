@@ -79,19 +79,38 @@ app.put("/edit/:id", (req, res) => {
     return res.status(400).json({ message: message });
   }
 
-
   console.log('req.body', req.body)
   const toUpdate = {};
   const updateableFields = ["item", "checked", "importance", "hours", "dueDate"];
 
-  updateableFields.forEach(field => {
-    console.log('feild', req.body[field])
-    if (field in req.body) {
-      toUpdate[field] = req.body[field];
-    }
-  });
 
-  console.log('toUpdate', toUpdate)
+
+  if (req.body.item) {
+    console.log('it has an item')
+    updateableFields.forEach(field => {
+      if (field in req.body) {
+        toUpdate[field] = req.body[field];
+      }
+    })
+
+  } else {
+      toUpdate.checked = req.body.checked
+      console.log(toUpdate)
+
+  }
+
+  // if (req.params.item) {
+  //   updateableFields.forEach(field => {
+  //     console.log('feild', req.body[field])
+  //     if (field in req.body) {
+  //       toUpdate[field] = req.body[field];
+  //     }
+  //   })
+  //   } else {
+  //       toUpdate = req.body
+  //     }
+
+  // console.log('toUpdate', req.body)
 
   ToDoList
     // .findByIdAndUpdate(req.params.id, { $set: toUpdate }, {"new": true})
