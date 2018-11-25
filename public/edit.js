@@ -14,6 +14,7 @@ function renderEditItemForm() {
 		let dueDateText = $.trim(dueDateItem.replace("|", ""));
 
 		$('.editForm').html(`
+			<div class=".editFormDiv">
 				<label for="edit-item" required>To Do Item</label>
 	      		<input type="text" name="edit-item" id="edit-item" value="${itemText}" required/>
 
@@ -37,6 +38,7 @@ function renderEditItemForm() {
 	      		<br>
 
 	      		<button type="submit" class="updateButton" id="${databaseId}">Update</button>
+	      	</div>
 			`)
 	});
 
@@ -92,7 +94,7 @@ function submitEdit() {
 					</li>
 					`);
 			}
-			$('.editForm').hide()
+			$('.editForm').empty()
 			}
 		});
 
