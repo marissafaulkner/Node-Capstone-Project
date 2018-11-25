@@ -20,3 +20,17 @@ body {
 	background-image: radial-gradient(#e6f9fe, #5773a8);
 	font-family: 'Niramit', sans-serif;
 }
+
+/*stared checkbox*/
+.star {
+	visibility: hidden;
+}
+
+.star:before {
+	content: "\2606";
+	visibility: visible;
+}
+
+.star:checked:before {
+	content: "\2605";
+}

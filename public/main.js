@@ -63,37 +63,23 @@ function filterToDoItems(data) {
 function renderToDoItems(data) {
 	return `
 		<li class="toDoItem ${data._id}">
-			<input type="checkbox" id="${data._id}" ${data.checked ? "checked" : "" }><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
-			<span class="edit-delete-buttons"><button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
+			<input type="checkbox" class="checkBox" id="${data._id}" ${data.checked ? "checked" : "" }><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+			<span class="edit-delete-buttons"><input type="checkbox" class="star"><button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
 		</li>
 	`;
 }
 
 
 function toDoChecked() {
-	$(document).on('change', 'input[type="checkbox"]', function(event) {
+	$(document).on('change', '.checkBox', function(event) {
 		
 
-		// $(event.currentTarget).attr('id')
-		let databaseId = $(event.currentTarget).attr('id');
-		// let item = $(event.currentTarget).parent().parent().find('.itemhtml').text()
-		// let hoursItem = $(event.currentTarget).parent().parent().find('.hourshtml').text()
-		// let dueDateItem = $(event.currentTarget).parent().parent().find('.duedatehtml').text()
 
+		let databaseId = $(event.currentTarget).attr('id');
+		
 		console.log(databaseId)
 
 		let checked = $(this).prop("checked")
-
-
-
-		// let data = {
-		// 	item: $('.itemhtml').val(),
-		// 	checked: !checked,
-		// 	importance: $('select#edit-importance').val(),
-		// 	hours: $('input[name="edit-hours"]').val(),
-		// 	dueDate: $('input[name="edit-dueDate"]').val()
-		// }
-
 
 		$.ajax({
 			url: "/edit/" + databaseId,

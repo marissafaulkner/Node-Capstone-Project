@@ -141,14 +141,20 @@ function itemDelete() {
 	});
 };
 
-function hideButtons() {
-	$('ul').on('mouseenter', '.toDoItem', function(event) {
-		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
-	});
-	$('ul').on('mouseleave', '.toDoItem', function() {
-		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
-	});
+// function fadeButtons() {
+// 	$('ul').on('mouseenter', '.toDoItem', function(event) {
+// 		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
+// 	});
+// 	$('ul').on('mouseleave', '.toDoItem', function() {
+// 		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
+// 	});
 
+// }
+
+function toggleEditDeleteButtons() {
+	$('#edit-delete-button').on('click', function(event) {
+		 $('.edit-delete-buttons').toggle();
+	})
 }
 
 function toggleShowDetails() {
@@ -160,6 +166,15 @@ function toggleShowDetails() {
 }
 
 
+function starCheckBox() {
+	$(document).on('change', '.star', function(event) {
+		let checked = $(this).prop("checked")
+
+		console.log(checked)
+	})
+}
+
+
 
 
 
@@ -167,8 +182,10 @@ function editAndDelete() {
 	renderEditItemForm();
 	submitEdit();
 	itemDelete();
-	hideButtons();
+	// fadeButtons();
+	toggleEditDeleteButtons();
 	toggleShowDetails();
+	starCheckBox();
 	// showHideEdit()
 }
 
