@@ -9,7 +9,8 @@ function addItemToDB() {
 			checked: false,
 			importance: $('select#importance').val(),
 			hours: $('input[name="hours"]').val(),
-			dueDate: $('input[name="dueDate"]').val()
+			dueDate: $('input[name="dueDate"]').val(),
+			starred: false
 		}
 
 		data = JSON.stringify(data)

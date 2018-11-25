@@ -8,7 +8,8 @@ const toDoSchema = mongoose.Schema({
 	checked: Boolean, //Boolean
 	importance: String, //monthly, weekly, daily
 	hours: String, //hours needed to spend on item
-	dueDate: String
+	dueDate: String,
+	starred: Boolean
 });
 
 
@@ -20,7 +21,8 @@ toDoSchema.methods.serialize = function() {
 		checked: this.checked,
 		importance: this.importance,
 		hours: this.hours,
-		dueDate: this.dueDate
+		dueDate: this.dueDate,
+		starred: this.starred
 	};
 };
 

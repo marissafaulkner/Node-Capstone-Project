@@ -1,32 +1,6 @@
 'use strict';
 
 function getToDosFromApi() {
-// 	$.getJSON('/todolist', function(data) {
-// 		// console.log(data)
-// 		// data.forEach(toDo => {
-// 		// 	html.push(renderToDoItems(toDo));
-// 		// })
-// 		return data
-// 	})
-
-
-//mentor example
-  // fetch('/todolist')
-  //   .then(response => response.json())
-  //   .then(responseJson => {
-  //   	console.log(responseJson)
-  //   	responseJson.forEach(toDo => {
-  //   		html.push(renderToDoItems(toDo))
-  //   		console.log(renderToDoItems(toDo))
-  //   	})
-  //   	return html
-  //   })
-  //   .then(html => {
-  //   	console.log(html)
-  //   	displayToDoItems(html)
-  //   })
-
-
   fetch('/todolist')
   	.then(response => response.json())
   	.then(responseJson => {
@@ -72,9 +46,6 @@ function renderToDoItems(data) {
 
 function toDoChecked() {
 	$(document).on('change', '.checkBox', function(event) {
-		
-
-
 		let databaseId = $(event.currentTarget).attr('id');
 		
 		console.log(databaseId)
@@ -136,21 +107,6 @@ function displayMonthlyToDoItems(arr) {
 
 }
 
-
-// $.getJSON('entries/', getBlackEntries);
-// 		function getBlackEntries(data) {
-//     		var blackTeaEntries = [];
-//     		if (data) {
-// 	    		data.forEach(function(item) {
-//     				if (item.teaColorTeaType==='Black') {
-//     					blackTeaEntries.push(item);
-//     				}
-//     			});
-// 			};
-// 			displayAllEntries(blackTeaEntries);
-// 			$('#allTeaBtn').removeClass('hideMe');
-
-// 		}
 
 function startPage() {
 	getToDosFromApi();

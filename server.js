@@ -57,7 +57,8 @@ app.post('/additem', bodyParser, (req, res) => {
 			checked: req.body.checked,
 			importance: req.body.importance, //monthly, weekly, daily
 			hours: req.body.hours, //hours needed to spend on item
-			dueDate: req.body.dueDate
+			dueDate: req.body.dueDate,
+      starred: req.body.starred
 		})
 		.then(todolist => res.status(201).json(todolist.serialize()))
     	.catch(err => {
@@ -81,7 +82,7 @@ app.put("/edit/:id", (req, res) => {
 
   console.log('req.body', req.body)
   const toUpdate = {};
-  const updateableFields = ["item", "checked", "importance", "hours", "dueDate"];
+  const updateableFields = ["item", "checked", "importance", "hours", "dueDate", "starred"];
 
 
 
@@ -137,7 +138,8 @@ app.put("/edit/:id", (req, res) => {
               checked: updatedToDo.checked,
               importance: updatedToDo.importance,
               hours: updatedToDo.hours,
-              dueDate: updatedToDo.dueDate
+              dueDate: updatedToDo.dueDate,
+              starred: updatedToDo.starred
             })
           })
       // }

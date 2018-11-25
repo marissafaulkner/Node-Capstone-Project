@@ -54,10 +54,11 @@ function submitEdit() {
 
 		let data = {
 			item: $('input[name="edit-item"]').val(),
-			checked: 'false',
+			checked: false,
 			importance: $('select#edit-importance').val(),
 			hours: $('input[name="edit-hours"]').val(),
-			dueDate: $('input[name="edit-dueDate"]').val()
+			dueDate: $('input[name="edit-dueDate"]').val(),
+			starred: false
 		}
 
 		data = JSON.stringify(data)
@@ -103,37 +104,15 @@ function submitEdit() {
 }
 
 
-// function showHideEdit() {
-// 	// let databaseId = 
-// 	$(document).on('click', '.editButton', function(event) {
-// 		console.log('test')
-//     	let formDiv = document.getElementById("edit-form")
-//     	if (formDiv.style.display === "none") {
-//     		formDiv.style.display = "block";
-//     	} else {
-//     		formDiv.style.display = "none";
-//     	}
-//     })
-// }
-
-
-
-
 
 function itemDelete() {
 	$(document).on('click', '.deleteButton', function(event) {
-		// console.log('click delete')
-		// console.log(event.currentTarget, 'test')
 		let databaseId = $(event.currentTarget).attr('id');
 		$(`.${databaseId}`).hide()
 		console.log(databaseId)
 		$.ajax({
 			method: 'DELETE',
 			url: 'delete/' + databaseId,
-			// success: function(json) {
-			// 	console.log(json)
-			// 	// if(!json.error) location.reload(true);
-			// },
 			error: function() {
 				alert('Error: Unable to delete entry');
 			}
@@ -141,21 +120,21 @@ function itemDelete() {
 	});
 };
 
-// function fadeButtons() {
-// 	$('ul').on('mouseenter', '.toDoItem', function(event) {
-// 		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
-// 	});
-// 	$('ul').on('mouseleave', '.toDoItem', function() {
-// 		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
-// 	});
+function fadeButtons() {
+	$('ul').on('mouseenter', '.toDoItem', function(event) {
+		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
+	});
+	$('ul').on('mouseleave', '.toDoItem', function() {
+		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
+	});
 
-// }
-
-function toggleEditDeleteButtons() {
-	$('#edit-delete-button').on('click', function(event) {
-		 $('.edit-delete-buttons').toggle();
-	})
 }
+
+// function toggleEditDeleteButtons() {
+// 	$('#edit-delete-button').on('click', function(event) {
+// 		 $('.edit-delete-buttons').toggle();
+// 	})
+// }
 
 function toggleShowDetails() {
     $('#details-button').on('click', function(event) {
@@ -182,8 +161,8 @@ function editAndDelete() {
 	renderEditItemForm();
 	submitEdit();
 	itemDelete();
-	// fadeButtons();
-	toggleEditDeleteButtons();
+	fadeButtons();
+	// toggleEditDeleteButtons();
 	toggleShowDetails();
 	starCheckBox();
 	// showHideEdit()
