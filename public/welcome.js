@@ -49,7 +49,7 @@ function secondNext() {
 		$('.js-welcome').html(`
 			<h2>This part requires a bit of self-deception,</h2>
 			<div class="textDiv">
-				<p>Rank projects that seem significant yet have more flexible deadlines at the top to make that one Very Important Task an easier choice.</p>
+				<p>Rank projects that seem significant yet have more flexible deadlines at the top to make that original one Very Important Task an easier choice.</p>
 
 				<p>Now that you have all the info, lets get procrastinating!</p>
 			</div>

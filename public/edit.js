@@ -150,6 +150,23 @@ function starCheckBox() {
 		let checked = $(this).prop("checked")
 
 		console.log(checked)
+
+		let databaseId = $(event.currentTarget).attr('id');
+		
+		console.log(databaseId)
+
+		$.ajax({
+			url: "/edit/" + databaseId,
+			type: "put",
+			contentType: 'application/json',
+			data: JSON.stringify({starred: checked}),
+			success: function(data) {
+				console.log(data)
+			}
+		})
+
+
+
 	})
 }
 
