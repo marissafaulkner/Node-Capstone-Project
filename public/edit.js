@@ -18,29 +18,31 @@ function renderEditItemForm() {
 
 		$('.editForm').html(`
 			<div class=".editFormDiv">
-				<label for="edit-item" required>To Do Item</label>
-	      		<input type="text" name="edit-item" id="edit-item" value="${itemText}" required/>
+				<fieldset>
+					<label for="edit-item" required>To Do Item</label>
+		      		<input type="text" name="edit-item" id="edit-item" value="${itemText}" required/>
 
-	      		<select name="edit-importance" id="edit-importance" required>
-			        <option value="Daily">Daily</option>
-			        <option value="Weekly" selected>Weekly</option>
-			        <option value="Monthly">Monthly</option>
-	      		</select>
+		      		<select name="edit-importance" id="edit-importance" required>
+				        <option value="Daily">Daily</option>
+				        <option value="Weekly" selected>Weekly</option>
+				        <option value="Monthly">Monthly</option>
+		      		</select>
 
-	      		<br>
+		      		<br>
 
-	      		<label for="edit-hours">Time Spent</label>
-	      		<input type="text" name="edit-hours" id="edit-hours" value="${hoursText}">
+		      		<label for="edit-hours">Time Spent</label>
+		      		<input type="text" name="edit-hours" id="edit-hours" value="${hoursText}">
 
-	      		<br>
+		      		<br>
 
 
-	      		<label for="edit-dueDate">Due Date</label>
-	      		<input type="text" name="edit-dueDate" id="edit-due-date" value="${dueDateText}">
+		      		<label for="edit-dueDate">Due Date</label>
+		      		<input type="text" name="edit-dueDate" id="edit-due-date" value="${dueDateText}">
 
-	      		<br>
+		      		<br>
 
-	      		<button type="submit" class="updateButton" id="${databaseId}">Update</button>
+		      		<button type="submit" class="updateButton" id="${databaseId}">Update</button>
+		      	</fieldset>
 	      	</div>
 			`)
 	});
@@ -78,24 +80,24 @@ function submitEdit() {
 			if (data.importance === 'Daily') {
 				$('.js-daily-list').append(`
 					<li class="toDoItem ${data.id}">
-						<input type="checkbox" id="myCheck ${data.id}"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
-						<span class="edit-delete-buttons"><button id="${data.id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
+						<input type="checkbox" class="checkBox" id="${data.id}" ${data.checked ? "checked" : "" }><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+						<span class="edit-delete-buttons"><input type="checkbox" class="star" id="${data.id}" ${data.starred ? "checked" : "" }><button id="${data.id}" type="button" class="editButton">Edit</button><button id="${data.id}" type="button" class="deleteButton">Delete</button></span>
 					</li>
 					`);
 			} 
 			else if (data.importance === 'Weekly') {
 				$('.js-weekly-list').append(`
 					<li class="toDoItem ${data.id}">
-						<input type="checkbox" id="myCheck ${data.id}"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
-						<span class="edit-delete-buttons"><button id="${data.id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
+						<input type="checkbox" class="checkBox" id="${data.id}" ${data.checked ? "checked" : "" }><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+						<span class="edit-delete-buttons"><input type="checkbox" class="star" id="${data.id}" ${data.starred ? "checked" : "" }><button id="${data.id}" type="button" class="editButton">Edit</button><button id="${data.id}" type="button" class="deleteButton">Delete</button></span>
 					</li>
 					`);
 			}
 			else if (data.importance === 'Monthly') {
 				$('.js-monthly-list').append(`
 					<li class="toDoItem ${data.id}">
-						<input type="checkbox" id="myCheck ${data.id}"><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
-						<span class="edit-delete-buttons"><button id="${data.id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
+						<input type="checkbox" class="checkBox" id="${data.id}" ${data.checked ? "checked" : "" }><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
+						<span class="edit-delete-buttons"><input type="checkbox" class="star" id="${data.id}" ${data.starred ? "checked" : "" }><button id="${data.id}" type="button" class="editButton">Edit</button><button id="${data.id}" type="button" class="deleteButton">Delete</button></span>
 					</li>
 					`);
 			}

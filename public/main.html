@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,31 +19,31 @@
 		<div id="add-item-section" style="display:none;">
 
 			<form action="" method="" id="addForm">
+				<fieldset>
+					<label for="item" required>To Do Item</label>
+		      		<input type="text" name="item" id="item" required/>
 
-				<label for="item" required>To Do Item</label>
-	      		<input type="text" name="item" id="item" required/>
+		      		<select name="importance" id="importance" required>
+				        <option value="Daily">Daily</option>
+				        <option value="Weekly" selected>Weekly</option>
+				        <option value="Monthly">Monthly</option>
+		      		</select>
 
-	      		<select name="importance" id="importance" required>
-			        <option value="Daily">Daily</option>
-			        <option value="Weekly" selected>Weekly</option>
-			        <option value="Monthly">Monthly</option>
-	      		</select>
+		      		<br>
 
-	      		<br>
+		      		<label for="hours">Time Spent</label>
+		      		<input type="text" name="hours" id="hours">
 
-	      		<label for="hours">Time Spent</label>
-	      		<input type="text" name="hours" id="hours">
-
-	      		<br>
+		      		<br>
 
 
-	      		<label for="dueDate">Due Date</label>
-	      		<input type="text" name="dueDate" id="due-date">
+		      		<label for="dueDate">Due Date</label>
+		      		<input type="text" name="dueDate" id="due-date">
 
-	      		<br>
+		      		<br>
 
-	      		<button type="submit">Add</button>
-
+		      		<button type="submit">Add</button>
+		      	</fieldset>
 			</form>
 
 		</div>
