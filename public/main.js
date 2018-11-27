@@ -11,9 +11,10 @@ function getToDosFromApi() {
 
 
 function filterToDoItems(data) {
-	var dailyToDos = [];
-	var weeklyToDos = [];
-	var monthlyToDos = [];
+	let dailyToDos = [];
+	let weeklyToDos = [];
+	let monthlyToDos = [];
+	let veryImportantToDo = [];
 	if (data) {
 		data.forEach(item => {
 			if (item.importance === 'Daily') {

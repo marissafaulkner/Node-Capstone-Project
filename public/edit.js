@@ -126,21 +126,21 @@ function itemDelete() {
 	});
 };
 
-function fadeButtons() {
-	$('ul').on('mouseenter', '.toDoItem', function(event) {
-		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
-	});
-	$('ul').on('mouseleave', '.toDoItem', function() {
-		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
-	});
+// function fadeButtons() {
+// 	$('ul').on('mouseenter', '.toDoItem', function(event) {
+// 		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
+// 	});
+// 	$('ul').on('mouseleave', '.toDoItem', function() {
+// 		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
+// 	});
 
-}
-
-// function toggleEditDeleteButtons() {
-// 	$('#edit-delete-button').on('click', function(event) {
-// 		 $('.edit-delete-buttons').toggle();
-// 	})
 // }
+
+function toggleEditDeleteButtons() {
+	$('#edit-delete-button').on('click', function(event) {
+		 $('.edit-delete-buttons').toggle();
+	})
+}
 
 function toggleShowDetails() {
     $('#details-button').on('click', function(event) {
@@ -154,23 +154,23 @@ function toggleShowDetails() {
 function starCheckBox() {
 	$(document).on('change', '.star', function(event) {
 		let checked = $(this).prop("checked")
-
-		console.log(checked)
-
 		let databaseId = $(event.currentTarget).attr('id');
-		
-		console.log(databaseId)
+
+		let listItem = $(this).parent().parent()
+
+		console.log(listItem)
 
 		$.ajax({
 			url: "/edit/" + databaseId,
 			type: "put",
 			contentType: 'application/json',
-			data: JSON.stringify({starred: checked}),
-			success: function(data) {
-				console.log(data)
-			}
+			data: JSON.stringify({starred: checked})
+			// success: function(data) {
+			// 	if (data.starred === true) {
+			// 	$('.very-important-task').append(listItem)
+			// 	}
+			// }
 		})
-
 
 
 	})
@@ -184,8 +184,8 @@ function editAndDelete() {
 	renderEditItemForm();
 	submitEdit();
 	itemDelete();
-	fadeButtons();
-	// toggleEditDeleteButtons();
+	// fadeButtons();
+	toggleEditDeleteButtons();
 	toggleShowDetails();
 	starCheckBox();
 	// showHideEdit()
