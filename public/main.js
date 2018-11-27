@@ -35,12 +35,14 @@ function filterToDoItems(data) {
 
 
 function renderToDoItems(data) {
+	console.log(data)
 	return `
 		<li class="toDoItem ${data._id}">
 			<input type="checkbox" class="checkBox" id="${data._id}" ${data.checked ? "checked" : "" }><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>
 			<span class="edit-delete-buttons"><input type="checkbox" class="star" id="${data._id}" ${data.starred ? "checked" : "" }><button id="${data._id}" type="button" class="editButton">Edit</button><button id="${data._id}" type="button" class="deleteButton">Delete</button></span>
 		</li>
-	`;
+	`
+	;
 }
 
 
@@ -69,8 +71,9 @@ function toDoChecked() {
 
 function displayDailyToDoItems(arr) {
 	let dailys = [];
-	console.log(arr)
+	console.log("array", arr)
 	arr.forEach(toDo => {
+		console.log(toDo)
 		dailys.push(renderToDoItems(toDo))
 	})
 	

@@ -95,8 +95,12 @@ app.put("/edit/:id", (req, res) => {
     })
 
   } else {
-      toUpdate.checked = req.body.checked
-      console.log(toUpdate)
+      if (req.body.checked ==! null) {
+        toUpdate.checked = req.body.checked
+        console.log(toUpdate)
+      } else if (req.body.starred ==! null) {
+        toUpdate.starred = req.body.starred
+      }
 
   }
 
