@@ -10,10 +10,10 @@ ul {
 	display: none;
 }
 
-html {
+/*html {
 	height: 100%;
 
-}
+}*/
 
 
 body {
@@ -22,23 +22,9 @@ body {
 	/*text-align: center;*/
 	font-family: 'Niramit', sans-serif;
 	color: white;
+	height: 100%;
 }
 }
-
-/*stared checkbox*/
-.star {
-	visibility: hidden;
-}
-
-.star:before {
-	content: "\2606";
-	visibility: visible;
-}
-
-.star:checked:before {
-	content: "\2605";
-}
-
 
 /*text*/
 
@@ -98,4 +84,19 @@ button:active {
 	border-radius:8px;
 	padding: 8px 35px;
 	margin-bottom: 12px;
+}
+
+
+/*stared checkbox*/
+.star {
+	visibility: hidden;
+}
+
+.star:before {
+	content: "\2606";
+	visibility: visible;
+}
+
+.star:checked:before {
+	content: "\2605";
 }
