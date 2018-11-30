@@ -76,7 +76,7 @@ app.put("/edit/:id", (req, res) => {
     const message =
       `Request path id (${req.params.id}) and request body id ` +
       `(${req.body.id}) must match`;
-    console.error(message);
+    // console.error(message);
     return res.status(400).json({ message: message });
   }
 
@@ -87,7 +87,7 @@ app.put("/edit/:id", (req, res) => {
 
 
   if (req.body.item) {
-    console.log('it has an item')
+    // console.log('it has an item')
     updateableFields.forEach(field => {
       if (field in req.body) {
         toUpdate[field] = req.body[field];
@@ -96,11 +96,11 @@ app.put("/edit/:id", (req, res) => {
   } 
   if (req.body.checked !== null && req.body.checked !== undefined) {
     toUpdate.checked = req.body.checked
-    console.log(toUpdate)
+    // console.log(toUpdate)
   } 
   if (req.body.starred !== null && req.body.starred !== undefined) {
     toUpdate.starred = req.body.starred
-    console.log('inside star block', toUpdate)
+    // console.log('inside star block', toUpdate)
   }
 
   
@@ -116,7 +116,7 @@ app.put("/edit/:id", (req, res) => {
 
     .findOne({_id: req.params.id})
     .then(todo => {
-      console.log('todo', todo)
+      // console.log('todo', todo)
       // if(todo) {
       //   console.log(todo)
       //   res.status(200).json(todo)

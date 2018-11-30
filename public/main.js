@@ -17,7 +17,10 @@ function filterToDoItems(data) {
 	let veryImportantToDo = [];
 	if (data) {
 		data.forEach(item => {
-			if (item.importance === 'Daily') {
+			if(item.starred) {
+				veryImportantToDo.push(item);
+			}
+			else if (item.importance === 'Daily') {
 				dailyToDos.push(item);
 			} 
 			else if (item.importance === 'Weekly') {
@@ -32,6 +35,7 @@ function filterToDoItems(data) {
 	displayDailyToDoItems(dailyToDos);
 	displayWeeklyToDoItems(weeklyToDos);
 	displayMonthlyToDoItems(monthlyToDos);
+	displayVeryImportantToDo(veryImportantToDo);
 }
 
 
@@ -107,6 +111,16 @@ function displayMonthlyToDoItems(arr) {
     // editItem();
 
 
+}
+
+
+function displayVeryImportantToDo(arr) {
+	let veryImportants = [];
+	arr.forEach(toDo => {
+		veryImportants.push(renderToDoItems(toDo))
+	})
+
+	$('.very-important-task').html(veryImportants)
 }
 
 

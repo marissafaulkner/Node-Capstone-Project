@@ -167,10 +167,10 @@ function starCheckBox() {
 			contentType: 'application/json',
 			data: JSON.stringify({starred: checked}),
 			success: function(data) {
-				// if (data.starred === true) {
-				// $('.very-important-task').append(listItem)
-				// }
-				console.log(data)
+				if (data.starred === true) {
+				$('.very-important-task').append(listItem)
+				}
+				// console.log(data)
 			}
 		})
 

@@ -20,7 +20,6 @@ function addItemToDB() {
 			url: "/additem",
 			data: data,
 			success: function(data) {
-				console.log(data)
 				if (data.importance === 'Daily') {
 					$('.js-daily-list').append(data);
 					$('.js-daily-list').append(renderToDoItems(data));
