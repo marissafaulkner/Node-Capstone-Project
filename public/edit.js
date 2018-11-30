@@ -19,6 +19,7 @@ function renderEditItemForm() {
 		$('.editForm').html(`
 			<div class=".editFormDiv">
 				<fieldset>
+				<legend>Edit Item</legend>
 					<label for="edit-item" required>To Do Item</label>
 		      		<input type="text" name="edit-item" id="edit-item" value="${itemText}" required/>
 
@@ -164,12 +165,13 @@ function starCheckBox() {
 			url: "/edit/" + databaseId,
 			type: "put",
 			contentType: 'application/json',
-			data: JSON.stringify({starred: checked})
-			// success: function(data) {
-			// 	if (data.starred === true) {
-			// 	$('.very-important-task').append(listItem)
-			// 	}
-			// }
+			data: JSON.stringify({starred: checked}),
+			success: function(data) {
+				// if (data.starred === true) {
+				// $('.very-important-task').append(listItem)
+				// }
+				console.log(data)
+			}
 		})
 
 

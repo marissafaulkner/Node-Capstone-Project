@@ -93,29 +93,18 @@ app.put("/edit/:id", (req, res) => {
         toUpdate[field] = req.body[field];
       }
     })
-
-  } else {
-      if (req.body.checked ==! null) {
-        toUpdate.checked = req.body.checked
-        console.log(toUpdate)
-      } else if (req.body.starred ==! null) {
-        toUpdate.starred = req.body.starred
-      }
-
+  } 
+  if (req.body.checked !== null && req.body.checked !== undefined) {
+    toUpdate.checked = req.body.checked
+    console.log(toUpdate)
+  } 
+  if (req.body.starred !== null && req.body.starred !== undefined) {
+    toUpdate.starred = req.body.starred
+    console.log('inside star block', toUpdate)
   }
 
-  // if (req.params.item) {
-  //   updateableFields.forEach(field => {
-  //     console.log('feild', req.body[field])
-  //     if (field in req.body) {
-  //       toUpdate[field] = req.body[field];
-  //     }
-  //   })
-  //   } else {
-  //       toUpdate = req.body
-  //     }
+  
 
-  // console.log('toUpdate', req.body)
 
   ToDoList
     // .findByIdAndUpdate(req.params.id, { $set: toUpdate }, {"new": true})
