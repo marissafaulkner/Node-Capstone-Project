@@ -152,6 +152,14 @@ function toggleShowDetails() {
 }
 
 
+//hide edit/delete buttons upon edit submit
+function submitEditHide() {
+	$('#edit-form').on('submit', function(event) {
+		$('.edit-delete-buttons').hide();
+	})
+}
+
+
 function starCheckBox() {
 	$(document).on('change', '.star', function(event) {
 		let checked = $(this).prop("checked")
@@ -178,6 +186,17 @@ function starCheckBox() {
 	})
 }
 
+// function unstar() {
+// 	$(document).on('change', '.star', function(event) {
+// 		let listItem = $(this).parent().parent()
+// 		let checked = $(this).prop("checked")
+
+// 		if (checked === false) {
+// 			console.log('unchecked star')
+// 		}
+// 	})
+// }
+
 
 
 
@@ -190,6 +209,8 @@ function editAndDelete() {
 	toggleEditDeleteButtons();
 	toggleShowDetails();
 	starCheckBox();
+	submitEditHide();
+	// unstar();
 	// showHideEdit()
 }
 
