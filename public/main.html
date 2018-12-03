@@ -14,7 +14,11 @@
 <body>
 	<main role="main">
 
-		<button type="button" id="addButton">Add Item</button>
+		<section class="buttons-section">
+			<button type="button" id="details-button">Show/Hide Details</button>
+			<button type="button" id="edit-delete-button">Edit/Delete</button>
+			<button type="button" id="addButton">Add Item</button>
+		</section>
 
 		<div id="add-item-section" style="display:none;">
 
@@ -53,8 +57,9 @@
 			<form action="" method="" id="edit-form" class="editForm"></form>
 		</div>
 
+
 		<div class="very-important-div">
-			<h2>Very Important Task</h2>
+			<h2 class="very-important-title">Very Important Task</h2>
 				<ul class="very-important-task">
 					
 				</ul>
@@ -85,9 +90,7 @@
 				</ul>
 		</div>
 		
-		<button type="button" id="details-button">Show/Hide Details</button>
-		<button type="button" id="edit-delete-button">Edit/Delete</button>
-
+		
 
 	</main>
 	<script src="main.js"></script>
