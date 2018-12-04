@@ -9,7 +9,7 @@ const toDoSchema = mongoose.Schema({
 	importance: String, //monthly, weekly, daily
 	hours: String, //hours needed to spend on item
 	dueDate: String,
-	starred: Boolean
+	starred: Boolean //most important task
 });
 
 

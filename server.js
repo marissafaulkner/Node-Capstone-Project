@@ -17,7 +17,6 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 app.use(express.static('public'));
-// app.use(bodyParser.json());
 app.use(express.json());
 
 
@@ -58,15 +57,13 @@ app.post('/additem', bodyParser, (req, res) => {
 			importance: req.body.importance, //monthly, weekly, daily
 			hours: req.body.hours, //hours needed to spend on item
 			dueDate: req.body.dueDate,
-      starred: req.body.starred
+      starred: req.body.starred //most important task(s)
 		})
 		.then(todolist => res.status(201).json(todolist.serialize()))
     	.catch(err => {
     		console.error(err);
         	res.status(500).json({error: 'Something went wrong'});
     	});
-	// res.send('testing')
-	// res.end('It worked!');
 
 });	
 
@@ -76,7 +73,6 @@ app.put("/edit/:id", (req, res) => {
     const message =
       `Request path id (${req.params.id}) and request body id ` +
       `(${req.body.id}) must match`;
-    // console.error(message);
     return res.status(400).json({ message: message });
   }
 
@@ -87,7 +83,6 @@ app.put("/edit/:id", (req, res) => {
 
 
   if (req.body.item) {
-    // console.log('it has an item')
     updateableFields.forEach(field => {
       if (field in req.body) {
         toUpdate[field] = req.body[field];
@@ -96,31 +91,17 @@ app.put("/edit/:id", (req, res) => {
   } 
   if (req.body.checked !== null && req.body.checked !== undefined) {
     toUpdate.checked = req.body.checked
-    // console.log(toUpdate)
   } 
   if (req.body.starred !== null && req.body.starred !== undefined) {
     toUpdate.starred = req.body.starred
-    // console.log('inside star block', toUpdate)
   }
 
   
 
 
   ToDoList
-    // .findByIdAndUpdate(req.params.id, { $set: toUpdate }, {"new": true})
-    // .then(todolist => {
-    //   console.log(todolist)
-    //   res.status(204).send('testing')
-    // })
-    // .catch(err => res.status(500).json({ message: "Internal server error" }));
-
     .findOne({_id: req.params.id})
     .then(todo => {
-      // console.log('todo', todo)
-      // if(todo) {
-      //   console.log(todo)
-      //   res.status(200).json(todo)
-      // } else {
         ToDoList
           .findByIdAndUpdate(req.params.id, { $set: toUpdate }, {new: true})
           .then(updatedToDo => {
@@ -135,7 +116,6 @@ app.put("/edit/:id", (req, res) => {
               starred: updatedToDo.starred
             })
           })
-      // }
     })
 });
 
@@ -157,7 +137,6 @@ app.use("*", function(req, res) {
 
 let server;
 
-// this function connects to our database, then starts the server
 function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
@@ -176,8 +155,6 @@ function runServer(databaseUrl, port = PORT) {
   });
 }
 
-// this function closes the server, and returns a promise. we'll
-// use it in our integration tests later.
 function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
@@ -192,8 +169,6 @@ function closeServer() {
   });
 }
 
-// if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
 };
