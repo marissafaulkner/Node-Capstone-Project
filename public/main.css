@@ -144,13 +144,13 @@ button:active {
 	height: 375px;
 	top: 25%;
 	left: 50%;
-	margin-top: -100px; /* Negative half of height. */
+	margin-top: -100px;
 	margin-left: -200px;
 	color: #1a001a;
 }
 
 .add-form-container, .editForm {
-	max-width: 500px;
+	/*max-width: 500px;*/
 	height: 100%;
 	padding: 10px;
 	background-color: white;
@@ -219,4 +219,27 @@ legend {
 .add, .exit {
 	display: inline-block;
 	width: 49.2%;
+}
+
+/*media queries*/
+@media only screen and (max-width: 600px) {
+	.daily-list, .weekly-list, .monthly-list, .very-important-div {
+		width: 95%;
+	}
+
+	ul {
+		padding-left: 5px;
+	}
+
+	.edit-delete-buttons {
+		display: block;
+	}
+
+/*	.add-form-popup, .edit-form-popup {
+		width: 200px;
+		top: 25%;
+		left: 50%;
+		margin-left: -100px;
+	}*/
+
 }

@@ -75,11 +75,31 @@ function exitButton() {
     })
 }
 
+// function clearAddForm() {
+// 	let formDiv = document.getElementById("add-item-section")
+// 	if (formDiv.style.display === "block") {
+// 		$(document).on('click', '.editButton', function(event) {
+// 	    		formDiv.style.display = "none";
+// 	    })
+// 	}
+// }
+
+// function clearEditForm() {
+// 	let editFormDiv = document.getElementById("edit-item-section")
+// 	if (editFormDiv.style.display === "block") {
+// 		$('#addButton').on('click', function(event) {
+// 	    		editFormDiv.style.display = "none";
+// 	    })
+// 	}
+// }
+
 function createAllItems() {
 	addItemToDB();
 	toggleShowEdit();
 	toggleHideEdit();
 	exitButton();
+	// clearAddForm();
+	// clearEditForm();
 }
 
 $(createAllItems);

@@ -2,11 +2,11 @@
 	box-sizing: border-box;
 }
 
-
+/*
 html {
 	height: 100%;
 
-}
+}*/
 
 
 body {
@@ -15,6 +15,7 @@ body {
 	text-align: center;
 	font-family: 'Niramit', sans-serif;
 	color: white;
+	height: 100%;
 }
 
 h1 {
@@ -46,7 +47,7 @@ h2 {
 
 .skip {
 	font-size: 15px;
-	color: white;
+	color: #5773a8;
 }
 
 button {
