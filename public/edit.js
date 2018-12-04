@@ -1,9 +1,10 @@
 'use strict';
 
+//editing and deleting items
+
 function renderEditItemForm() {
 	$(document).on('click', '.editButton', function(event) {
 		$('#add-item-section').css('display', 'none')
-		// $('.editForm').show();
 		let editFormDiv = document.getElementById("edit-item-section")
 		if (editFormDiv.style.display === "none") {
     		editFormDiv.style.display = "block";
@@ -11,11 +12,9 @@ function renderEditItemForm() {
     		editFormDiv.style.display = "none";
     	}
 
-    	console.log(editFormDiv)
 		
 		let databaseId = $(event.currentTarget).attr('id');
 
-		console.log(event.currentTarget)
 
 		let item = $(event.currentTarget).parent().parent().find('.itemhtml').text()
 		let hoursItem = $(event.currentTarget).parent().parent().find('.hourshtml').text()
@@ -81,11 +80,9 @@ function submitEdit() {
 		$.ajax({
 	  		type: 'PUT',
 	  		contentType: 'application/json',
-			// dataType: 'json',
 			url: 'edit/' + databaseId,
 			data: data,
 			success: function(data) {
-				console.log(data)
 				$('li.' + databaseId).hide();
 			if (data.importance === 'Daily') {
 				$('.js-daily-list').append(`
@@ -136,15 +133,6 @@ function itemDelete() {
 	});
 };
 
-// function fadeButtons() {
-// 	$('ul').on('mouseenter', '.toDoItem', function(event) {
-// 		$(event.currentTarget).find('.edit-delete-buttons').fadeIn();
-// 	});
-// 	$('ul').on('mouseleave', '.toDoItem', function() {
-// 		$(event.currentTarget).find('.edit-delete-buttons').fadeOut();
-// 	});
-
-// }
 
 function toggleEditDeleteButtons() {
 	$('#edit-delete-button').on('click', function(event) {
@@ -187,7 +175,6 @@ function starCheckBox() {
 				if (data.starred === true) {
 				$('.very-important-task').append(listItem)
 				}
-				// console.log(data)
 			}
 		})
 
@@ -195,32 +182,16 @@ function starCheckBox() {
 	})
 }
 
-// function unstar() {
-// 	$(document).on('change', '.star', function(event) {
-// 		let listItem = $(this).parent().parent()
-// 		let checked = $(this).prop("checked")
-
-// 		if (checked === false) {
-// 			console.log('unchecked star')
-// 		}
-// 	})
-// }
-
-
-
 
 
 function editAndDelete() {
 	renderEditItemForm();
 	submitEdit();
 	itemDelete();
-	// fadeButtons();
 	toggleEditDeleteButtons();
 	toggleShowDetails();
 	starCheckBox();
 	submitEditHide();
-	// unstar();
-	// showHideEdit()
 }
 
 $(editAndDelete);

@@ -17,9 +17,8 @@ body {
 	height: 100%;
 	font-size: 19px;
 }
-}
 
-/*text*/
+
 
 h2 {
 	font-style: italic;
@@ -70,7 +69,6 @@ button:active {
 
 
 /*background divs*/
-
 .daily-list, .weekly-list, .monthly-list {
 	background-color: rgb(23, 17, 34, 0.4);
 	margin-left: auto;
@@ -133,7 +131,6 @@ button:active {
 
 
 /*form stylings*/
-
 .add-form-popup, .edit-form-popup {
 	display: none;
 	position: fixed;
@@ -150,7 +147,6 @@ button:active {
 }
 
 .add-form-container, .editForm {
-	/*max-width: 500px;*/
 	height: 100%;
 	padding: 10px;
 	background-color: white;
@@ -185,7 +181,6 @@ legend {
 	background-color: #bab4cb;
 	height: 30px;
 	margin-bottom: 10px;
-	/*width: ;*/
 	font-size: 18px;
 	color: #1a001a;
 }
@@ -234,13 +229,6 @@ legend {
 	.edit-delete-buttons {
 		display: block;
 	}
-
-/*	.add-form-popup, .edit-form-popup {
-		width: 200px;
-		top: 25%;
-		left: 50%;
-		margin-left: -100px;
-	}*/
 
 }
 

@@ -1,5 +1,7 @@
 'use strict';
 
+//js for page load with data
+
 function getToDosFromApi() {
   fetch('/todolist')
   	.then(response => response.json())
@@ -40,7 +42,6 @@ function filterToDoItems(data) {
 
 
 function renderToDoItems(data) {
-	console.log(data)
 	data._id = data._id ? data._id : data.id
 	return `
 		<li class="toDoItem ${data._id}">
@@ -64,10 +65,7 @@ function toDoChecked() {
 			url: "/edit/" + databaseId,
 			type: "put",
 			contentType: 'application/json',
-			data: JSON.stringify({checked: checked}),
-			success: function(data) {
-				console.log(data)
-			}
+			data: JSON.stringify({checked: checked})
 		})
 
 	})
@@ -77,42 +75,31 @@ function toDoChecked() {
 
 function displayDailyToDoItems(arr) {
 	let dailys = [];
-	console.log("array", arr)
 	arr.forEach(toDo => {
 		dailys.push(renderToDoItems(toDo))
 	})
 	
     $('.js-daily-list').html(dailys)
-    // itemDelete(arr);
-    // editItem();
 
 }
 
 function displayWeeklyToDoItems(arr) {
 	let weeklys = [];
-	console.log(arr)
 	arr.forEach(toDo => {
 		weeklys.push(renderToDoItems(toDo))
 	})
 	
     $('.js-weekly-list').html(weeklys)
-    // itemDelete(arr);
-    // editItem();
 
 }
 
 function displayMonthlyToDoItems(arr) {
 	let monthlys = [];
-	console.log(arr)
 	arr.forEach(toDo => {
 		monthlys.push(renderToDoItems(toDo))
 	})
 	
     $('.js-monthly-list').html(monthlys)
-    // itemDelete(arr);
-    // editItem();
-
-
 }
 
 
