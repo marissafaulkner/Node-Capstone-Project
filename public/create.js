@@ -26,11 +26,11 @@ function addItemToDB() {
 				} 
 				else if (data.importance === 'Weekly') {
 					$('.js-weekly-list').append(data);
-					$('.js-daily-list').append(renderToDoItems(data));
+					$('.js-weekly-list').append(renderToDoItems(data));
 				}
 				else if (data.importance === 'Monthly') {
 					$('.js-monthly-list').append(data);
-					$('.js-daily-list').append(renderToDoItems(data));
+					$('.js-monthly-list').append(renderToDoItems(data));
 				}
 			},
 			dataType: 'json',
@@ -42,6 +42,7 @@ function addItemToDB() {
 
 function toggleShowEdit() {
     $('#addButton').on('click', function(event) {
+    	$('#edit-item-section').css('display', 'none')
     	let formDiv = document.getElementById("add-item-section")
     	if (formDiv.style.display === "none") {
     		formDiv.style.display = "block";
@@ -93,6 +94,12 @@ function exitButton() {
 // 	}
 // }
 
+function submitAddHide() {
+	$('#addForm').on('submit', function(event) {
+		$('.edit-delete-buttons').hide();
+	})
+}
+
 function createAllItems() {
 	addItemToDB();
 	toggleShowEdit();
@@ -100,6 +107,7 @@ function createAllItems() {
 	exitButton();
 	// clearAddForm();
 	// clearEditForm();
+	submitAddHide();
 }
 
 $(createAllItems);

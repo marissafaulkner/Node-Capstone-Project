@@ -40,6 +40,8 @@ function filterToDoItems(data) {
 
 
 function renderToDoItems(data) {
+	console.log(data)
+	data._id = data._id ? data._id : data.id
 	return `
 		<li class="toDoItem ${data._id}">
 			<input type="checkbox" class="checkBox" id="${data._id}" ${data.checked ? "checked" : "" }><span class="itemhtml">${data.item} </span><span class="hourshtml"> ${data.hours ? `| ${data.hours}` : ""} </span><span class="duedatehtml">${data.dueDate ? `| ${data.dueDate}` : ""}</span>

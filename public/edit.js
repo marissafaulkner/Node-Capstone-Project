@@ -2,6 +2,7 @@
 
 function renderEditItemForm() {
 	$(document).on('click', '.editButton', function(event) {
+		$('#add-item-section').css('display', 'none')
 		// $('.editForm').show();
 		let editFormDiv = document.getElementById("edit-item-section")
 		if (editFormDiv.style.display === "none") {
@@ -25,7 +26,7 @@ function renderEditItemForm() {
 		let dueDateText = $.trim(dueDateItem.replace("|", ""));
 
 		$('.editForm').html(`
-			<div class=".editFormDiv">
+			<div class="editFormDiv">
 				<fieldset>
 				<legend>Edit Item</legend>
 					<label for="edit-item" required>To Do Item</label>
@@ -129,7 +130,7 @@ function itemDelete() {
 			method: 'DELETE',
 			url: 'delete/' + databaseId,
 			error: function() {
-				alert('Error: Unable to delete entry');
+				console.log('Error: Unable to delete entry');
 			}
 		});
 	});
