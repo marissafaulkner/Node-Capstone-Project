@@ -53,6 +53,7 @@ function renderToDoItems(data) {
 }
 
 
+//persistent checking
 function toDoChecked() {
 	$(document).on('change', '.checkBox', function(event) {
 		let databaseId = $(event.currentTarget).attr('id');
