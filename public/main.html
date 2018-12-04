@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet"
+	<link href="https://fonts.googleapis.com/css?family=Niramit:400,600,700i" rel="stylesheet"
 	
 	<meta name="description" content="Use your procrastination to get things done.">
 </head>
@@ -15,20 +15,20 @@
 	<main role="main">
 
 		<section class="buttons-section">
-			<button type="button" id="details-button">Show/Hide Details</button>
-			<button type="button" id="edit-delete-button">Edit/Delete</button>
 			<button type="button" id="addButton">Add Item</button>
+			<button type="button" id="edit-delete-button">Edit/Delete</button>
+			<button type="button" id="details-button">Show/Hide Details</button>
 		</section>
 
-		<div id="add-item-section" style="display:none;">
+		<div id="add-item-section" class="add-form-popup" style="display: none;">
 
-			<form action="" method="" id="addForm">
+			<form action="" method="" id="addForm" class="add-form-container">
 				<fieldset>
 				<legend>Add Item</legend>
 					<label for="item" required>To Do Item</label>
 		      		<input type="text" name="item" id="item" required/>
 
-		      		<select name="importance" id="importance" required>
+		      		<select class="drop-down" name="importance" id="importance" required>
 				        <option value="Daily">Daily</option>
 				        <option value="Weekly" selected>Weekly</option>
 				        <option value="Monthly">Monthly</option>
@@ -47,13 +47,14 @@
 
 		      		<br>
 
-		      		<button type="submit">Add</button>
+		      		<button type="submit" class="add btn">Add</button>
+		      		<button type="button" class="exit btn">Exit</button>
 		      	</fieldset>
 			</form>
 
 		</div>
 
-		<div id="edit-item-section">
+		<div id="edit-item-section" class="edit-form-popup" style="display: none;">
 			<form action="" method="" id="edit-form" class="editForm"></form>
 		</div>
 

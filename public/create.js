@@ -64,10 +64,22 @@ function clearForm() {
 	document.getElementById("addForm").reset();
 }
 
+function exitButton() {
+	$('.exit').on('click', function(event) {
+    	let formDiv = document.getElementById("add-item-section")
+    	if (formDiv.style.display === "none") {
+    		formDiv.style.display = "block";
+    	} else {
+    		formDiv.style.display = "none";
+    	}
+    })
+}
+
 function createAllItems() {
 	addItemToDB();
 	toggleShowEdit();
 	toggleHideEdit();
+	exitButton();
 }
 
 $(createAllItems);

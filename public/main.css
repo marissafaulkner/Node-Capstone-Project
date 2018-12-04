@@ -38,6 +38,7 @@ button {
 	padding:13px; 
 	text-decoration:none;
 	transition: all 0.15s;
+	margin-bottom: 3px;
 }
 
 button:hover {
@@ -128,4 +129,94 @@ button:active {
 .star:checked:before {
 	content: "\2605";
 	color: #ffff4d;
+}
+
+
+/*form stylings*/
+
+.add-form-popup, .edit-form-popup {
+	display: none;
+	position: fixed;
+	border: 3px solid #9589a9;
+	border-radius: 8px;
+	z-index: 9;
+	min-width: 400px;
+	height: 375px;
+	top: 25%;
+	left: 50%;
+	margin-top: -100px; /* Negative half of height. */
+	margin-left: -200px;
+	color: #1a001a;
+}
+
+.add-form-container, .editForm {
+	max-width: 500px;
+	height: 100%;
+	padding: 10px;
+	background-color: white;
+	border-radius: 4px;
+}
+
+fieldset {
+	height: 100%;
+	color: #2B2644;
+	border: 0;
+}
+
+legend {
+	color: #2B2644;
+	text-align: center;
+	font-weight: 600;
+	font-size: 23px;
+}
+
+.add-form-container input[type=text], .editForm input[type=text] {
+	background: #e4e1ea;
+	border: none;
+	width: 100%;
+	height: 30px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+}
+
+.drop-down {
+	border: none;
+	background-color: #bab4cb;
+	height: 30px;
+	margin-bottom: 10px;
+	/*width: ;*/
+	font-size: 18px;
+	color: #1a001a;
+}
+
+.btn {
+	width: 100%;
+	height: 40px;
+	border-radius: 0px;
+	background-color:#394260;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:16px;
+	font-weight:600;
+	padding:13px; 
+	text-decoration:none;
+	transition: all 0.15s;
+	margin-top: 5px;
+}
+
+.btn:hover {
+	color: #394260;
+	background-color: #bfc6d9;
+}
+
+.btn:active {
+	position:relative;
+	top:1px;
+}
+
+.add, .exit {
+	display: inline-block;
+	width: 49.2%;
 }

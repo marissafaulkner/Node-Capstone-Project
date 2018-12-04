@@ -2,8 +2,16 @@
 
 function renderEditItemForm() {
 	$(document).on('click', '.editButton', function(event) {
-		$('.editForm').show();
-		// console.log($(event.currentTarget).parent().parent()[0])
+		// $('.editForm').show();
+		let editFormDiv = document.getElementById("edit-item-section")
+		if (editFormDiv.style.display === "none") {
+    		editFormDiv.style.display = "block";
+    	} else {
+    		editFormDiv.style.display = "none";
+    	}
+
+    	console.log(editFormDiv)
+		
 		let databaseId = $(event.currentTarget).attr('id');
 
 		console.log(event.currentTarget)
@@ -23,9 +31,9 @@ function renderEditItemForm() {
 					<label for="edit-item" required>To Do Item</label>
 		      		<input type="text" name="edit-item" id="edit-item" value="${itemText}" required/>
 
-		      		<select name="edit-importance" id="edit-importance" required>
-				        <option value="Daily">Daily</option>
-				        <option value="Weekly" selected>Weekly</option>
+		      		<select class="drop-down" name="edit-importance" id="edit-importance" required>
+				        <option value="Daily" selected>Daily</option>
+				        <option value="Weekly">Weekly</option>
 				        <option value="Monthly">Monthly</option>
 		      		</select>
 
@@ -42,7 +50,7 @@ function renderEditItemForm() {
 
 		      		<br>
 
-		      		<button type="submit" class="updateButton" id="${databaseId}">Update</button>
+		      		<button type="submit" class="updateButton btn" id="${databaseId}">Update</button>
 		      	</fieldset>
 	      	</div>
 			`)
@@ -102,7 +110,7 @@ function submitEdit() {
 					</li>
 					`);
 			}
-			$('.editForm').hide()
+			$('.edit-form-popup').hide()
 			}
 		});
 
