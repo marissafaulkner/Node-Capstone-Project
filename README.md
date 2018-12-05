@@ -16,6 +16,9 @@
 ```
 Then open [`localhost:8080`](http://localhost:8080) in a browser.
 
+<h2>Introduction</h2>
+<p>As a practiced procrastinator, I've always found that to do lists are a nesseccary part</p>
+
 <h2>Tech Stack</h2>
 <ul>
   <li>HTML</li>
@@ -26,7 +29,7 @@ Then open [`localhost:8080`](http://localhost:8080) in a browser.
   <li>Mongo DB</li>
 </ul>
 
-<h3>Responsive</h3>
+<h2>Responsive</h3>
 <ul>
   <li>The app is fully responsive and quickly adapts to all mobile, tablet, and desktop viewports.</li>
 </ul>
