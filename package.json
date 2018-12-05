@@ -8,6 +8,7 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "event-stream": "^3.3.4",
     "express": "^4.16.4",
     "mocha": "^5.2.0",
     "mongod": "^2.0.0",
