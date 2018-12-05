@@ -15,3 +15,18 @@
 >   npm start
 ```
 Then open [`localhost:8080`](http://localhost:8080) in a browser.
+
+<h2>Tech Stack</h2>
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+  <li>jQuery</li>
+  <li>Node.js</li>
+  <li>Mongo DB</li>
+</ul>
+
+<h3>Responsive</h3>
+<ul>
+  <li>The app is fully responsive and quickly adapts to all mobile, tablet, and desktop viewports.</li>
+</ul>
