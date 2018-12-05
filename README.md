@@ -17,7 +17,7 @@
 Then open [`localhost:8080`](http://localhost:8080) in a browser.
 
 <h2>Introduction</h2>
-<p>As a practiced procrastinator, I've always found that to do lists are a nesseccary part</p>
+<p>As a practiced procrastinator, I've always found that to do lists are a necessary part of me getting anything done. I wanted to make an app that could benefit procrastinators like me in our effort to actually get things done. Through this endevor I found a technique called Structure Procrastination <a href="https://www.businessinsider.com/use-procrastination-to-get-things-done-2014-6">Source</a> <a href="https://www.chronicle.com/article/How-to-ProcrastinateStill/93959">Source</a> and I based my app around this basic idea.</p>
 
 <h2>Tech Stack</h2>
 <ul>
